@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  nodejs-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          build-args: |
+            NPM_TOKEN=${{ secrets.NPM_TOKEN }}
+            TARGET=nodejs
+  browser-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          build-args: |
+            NPM_TOKEN=${{ secrets.NPM_TOKEN }}
+            TARGET=browser
+     
