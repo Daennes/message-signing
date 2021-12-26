@@ -12,7 +12,8 @@ The library is composed of structs for (de)serializing the CBOR defined in CIP-0
 
 ## Installing
 
-`npm i daennes-emurgo-message-signing-nodejs`
+NodeJs: `npm i daennes-emurgo-message-signing-nodejs`
+Browser: `npm i daennes-emurgo-message-signing-browser`
 
 ## Building
 
