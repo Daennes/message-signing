@@ -13,8 +13,6 @@ RUN sed -i 's/{PACKAGE_NAME}/daennes-emurgo-message-signing-'"$TARGET"'/' Cargo.
 
 RUN wasm-pack build --target="$TARGET"
 
-RUN apt-get update && apt-get upgrade && apt-get install jq -y
-
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash && apt-get install -y nodejs
 
 RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
